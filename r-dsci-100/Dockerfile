@@ -14,3 +14,7 @@ RUN conda install --quiet --yes \
 
 RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org')"
 RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
+
+# nbgitpuller 
+RUN pip install git+https://github.com/data-8/nbgitpuller
+RUN jupyter serverextension enable --py nbgitpuller --sys-prefix
