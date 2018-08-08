@@ -2,7 +2,9 @@
 # Distributed under the terms of the Modified BSD License.
 FROM jupyter/r-notebook
 
-USER root
+
+RUN pip install git+https://github.com/data-8/nbgitpuller \
+ && jupyter serverextension enable --sys-prefix nbgitpuller
 
 # R packages
 RUN conda install --quiet --yes \
@@ -12,5 +14,14 @@ RUN conda install --quiet --yes \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-RUN Rscript -e "install.packages('infer')"
+RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org')"
 RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
+
+USER root
+RUN useradd -m -s /bin/bash -N -u 1002 dsci100
+USER dsci100
+# Configure environment
+ENV NB_USER=dsci100 \
+    NB_UID=1002
+ENV HOME=/home/$NB_USER
+WORKDIR $HOME
