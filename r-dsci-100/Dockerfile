@@ -18,10 +18,10 @@ RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org'
 RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
 
 USER root
-RUN useradd -m -s /bin/bash -N -u 1002 dsci100
-USER dsci100
+RUN useradd -m -s /bin/bash -N -u 9999 jupyter
+USER jupyter
 # Configure environment
-ENV NB_USER=dsci100 \
-    NB_UID=1002
+ENV NB_USER=jupyter \
+    NB_UID=9999
 ENV HOME=/home/$NB_USER
 WORKDIR $HOME
