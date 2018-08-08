@@ -12,5 +12,5 @@ RUN conda install --quiet --yes \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-RUN Rscript -e "install.packages('infer')"
+RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org')"
 RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
