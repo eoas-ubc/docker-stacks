@@ -9,9 +9,9 @@ RUN pip install nbgrader
 WORKDIR /assignments
 
 # Note: some of the user permissions may need to be changed as well.
-RUN useradd -m grader
-RUN chown -R grader:grader /home/grader
-USER grader
+# RUN useradd -m grader
+# RUN chown -R grader:grader /home/grader
+# USER grader
 
 # Add entrypoint
 ENTRYPOINT ["tini", "--", "nbgrader"]
