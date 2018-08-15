@@ -9,3 +9,6 @@ RUN pip install nbgrader
 WORKDIR /assignments
 
 # Note: some of the user permissions may need to be changed as well.
+
+# Add entrypoint
+ENTRYPOINT ["tini", "--", "nbgrader"]
