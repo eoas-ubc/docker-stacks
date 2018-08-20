@@ -4,7 +4,7 @@ FROM jupyter/r-notebook
 
 
 RUN pip install git+https://github.com/data-8/nbgitpuller \
- && jupyter serverextension enable --sys-prefix nbgitpuller
+    && jupyter serverextension enable --sys-prefix nbgitpuller
 
 # R packages
 RUN conda install --quiet --yes \
