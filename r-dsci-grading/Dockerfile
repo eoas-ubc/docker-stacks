@@ -7,7 +7,7 @@ USER root
 RUN pip install nbgrader
 
 # Overwrite workdir
-WORKDIR /assignments
+#WORKDIR /assignments
 
 # Note: some of the user permissions may need to be changed as well.
 USER jupyter
