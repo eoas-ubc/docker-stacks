@@ -4,7 +4,9 @@ FROM ubcdsci/r-dsci-100
 
 # Install nbgrader for grading
 USER root
-RUN pip install nbgrader
+RUN git clone https://github.com/jupyter/nbgrader
+RUN conda install jupyter
+RUN cd nbgrader && pip install -r dev-requirements.txt -e . --no-cache-dir
 RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
 RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
