@@ -3,13 +3,18 @@
 FROM ubcdsci/r-dsci-100
 
 # Install nbgrader for grading
-USER root
-RUN git clone https://github.com/jupyter/nbgrader
-RUN conda install jupyter
-RUN cd nbgrader && pip install -r dev-requirements.txt -e . --no-cache-dir
+ENV NB_USER=jovyan
+ENV HOME=/home/$NB_USER
+USER $NB_USER
+RUN conda install -c anaconda jupyter_client
+RUN conda install -c anaconda python-dateutil
+#RUN pip install alembic
+RUN pip install git+https://github.com/jupyter/nbgrader
 RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
 RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
 # switch back to jupyter user
-USER jupyter
+ENV NB_USER=jupyter
+ENV HOME=/home/$NB_USER
+USER $NB_USER
