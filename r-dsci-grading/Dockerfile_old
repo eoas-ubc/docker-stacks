@@ -9,15 +9,13 @@ USER $NB_USER
 RUN conda install -c anaconda jupyter_client
 RUN conda install -c anaconda python-dateutil
 
-# install nbgrader and fix run issues
-RUN pip install alembic
-RUN pip install git+https://github.com/jupyter/nbgrader
-RUN yes | pip uninstall ipython
-RUN pip install ipykernel
-RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
-RUN jupyter nbextension enable --sys-prefix --py nbgrader
-RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
+RUN pip install alembic
+#RUN pip install nbgrader
+#RUN pip install alembic
+#RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
+#RUN jupyter nbextension enable --sys-prefix --py nbgrader
+#RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
 # switch back to jupyter user
 ENV NB_USER=jupyter
