@@ -16,7 +16,12 @@ RUN conda install --quiet --yes \
 
 RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org')"
 RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('selectr', repos = 'http://cran.us.r-project.org')"
+RUN Rscript -e "install.packages('selectr', repos = 'http://cran.us.r-project.org')
+RUN Rscript -e "install.packages('e1071', repos = 'http://cran.us.r-project.org')"
+RUN Rscript -e "install.packages('caret', repos = 'http://cran.us.r-project.org')"
+RUN Rscript -e "install.packages('tsne', repos = 'http://cran.us.r-project.org')"
+RUN Rscript -e "install.packages('GGally', repos = 'http://cran.us.r-project.org')"
+RUN Rscript -e "install.packages('gridExtra', repos = 'http://cran.us.r-project.org')"
 
 USER root
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
