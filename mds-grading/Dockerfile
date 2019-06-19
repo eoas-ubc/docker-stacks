@@ -18,8 +18,13 @@ RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
 RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
+# install graphviz and altair for plotting
+# RUN pip install --user graphviz
+# RUN pip install --user altair vega_datasets notebook vega
 
 # switch back to jupyter user
 ENV NB_USER=jupyter
 ENV HOME=/home/$NB_USER
 USER $NB_USER
+RUN pip install --user altair vega_datasets notebook vega
+RUN pip install --user graphviz
