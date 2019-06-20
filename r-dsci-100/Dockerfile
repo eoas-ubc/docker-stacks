@@ -1,33 +1,18 @@
-# Copyright (c) UBC-DSCI Development Team.
+# Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM jupyter/r-notebook
+ARG BASE_CONTAINER=jupyter/r-notebook
+FROM $BASE_CONTAINER
 
+LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
-RUN pip install git+https://github.com/data-8/nbgitpuller \
-    && jupyter serverextension enable --sys-prefix nbgitpuller
+# R packages on conda-forge
+RUN conda install --quiet --yes -c conda-forge \
+  r-infer=0.4* \
+  r-rtsne=0* \
+  r-ggally=1.4* \
+  r-gridextra=2.3* \
+  r-testthat=2.1* 
 
-# R packages
-RUN conda install --quiet --yes \
-    'r-testthat=2.0*' \
-    'r-plotly=4.7*' \
-    'r-repr=0.15*' && \
-    conda clean -tipsy && \
-    fix-permissions $CONDA_DIR
-
-RUN Rscript -e "install.packages('infer', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('scatterplot3d', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('selectr', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('e1071', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('caret', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('tsne', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('GGally', repos = 'http://cran.us.r-project.org')"
-RUN Rscript -e "install.packages('gridExtra', repos = 'http://cran.us.r-project.org')"
-
-USER root
-RUN useradd -m -s /bin/bash -N -u 9999 jupyter
-USER jupyter
-# Configure environment
-ENV NB_USER=jupyter \
-    NB_UID=9999
-ENV HOME=/home/$NB_USER
-WORKDIR $HOME
+# THIS WILL BE REMOVED ONCE THIS PR IS MERGED: https://github.com/jupyter/docker-stacks/pull/890
+# Install e1071 R package (dependency of the caret R package)
+RUN conda install --quiet --yes r-e1071
