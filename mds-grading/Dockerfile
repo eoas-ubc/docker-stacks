@@ -19,7 +19,7 @@ RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
 # switch back to jupyter user
-ENV NB_USER=jupyter
+ENV NB_USER=jovyan
 ENV HOME=/home/$NB_USER
 USER $NB_USER
 RUN pip install --user altair vega_datasets notebook vega
