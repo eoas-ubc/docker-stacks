@@ -43,13 +43,8 @@ RUN conda install --quiet --yes \
     'r-crayon=1.3*' \
     'r-randomforest=4.6*' \
     'r-htmltools=0.3*' \
-    'r-testthat=2.0*' \
-    'r-plotly=4.7*' \
-    'r-repr=0.15*' && \
     'r-sparklyr=0.9*' \
     'r-htmlwidgets=1.2*' \
     'r-hexbin=1.27*' && \
     conda clean --all -f -y && \
     fix-permissions $CONDA_DIR
-
-RUN Rscript -e "install.packages('infer')"
