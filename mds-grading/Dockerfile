@@ -6,8 +6,9 @@ FROM $BASE_CONTAINER
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
 RUN conda install --quiet --yes -c anaconda jupyter_client \
-  python-dateutil \
-  graphviz
+  python-dateutil
+RUN pip install --user graphviz
+# \  graphviz
 
 RUN conda install -c conda-forge altair vega_datasets notebook vega
 
