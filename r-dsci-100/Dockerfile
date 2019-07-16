@@ -13,10 +13,6 @@ RUN conda install --quiet --yes -c conda-forge \
   r-gridextra=2.3* \
   r-testthat=2.1* 
 
-# THIS WILL BE REMOVED ONCE THIS PR IS MERGED: https://github.com/jupyter/docker-stacks/pull/890
-# Install e1071 R package (dependency of the caret R package)
-RUN conda install --quiet --yes r-e1071
-
 USER root
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 USER jupyter
