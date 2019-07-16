@@ -16,3 +16,9 @@ RUN pip install ipykernel
 RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite
 RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
+
+USER jupyter
+# Configure environment
+ENV NB_USER=jupyter \
+    NB_UID=9999
+ENV HOME=/home/$NB_USER
