@@ -17,8 +17,11 @@ RUN conda install --quiet --yes -c conda-forge \
 # Install e1071 R package (dependency of the caret R package)
 RUN conda install --quiet --yes r-e1071
 
+USER root
+RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 USER jupyter
 # Configure environment
 ENV NB_USER=jupyter \
     NB_UID=9999
 ENV HOME=/home/$NB_USER
+WORKDIR $HOME
