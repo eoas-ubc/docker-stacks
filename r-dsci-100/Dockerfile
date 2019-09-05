@@ -11,7 +11,8 @@ RUN conda install --quiet --yes -c conda-forge \
   r-rtsne=0* \
   r-ggally=1.4* \
   r-gridextra=2.3* \
-  r-testthat=2.1* 
+  r-testthat=2.1* \
+  r-rpostgres=1.1*
 
 USER root
 RUN pip install git+https://github.com/data-8/nbgitpuller \
