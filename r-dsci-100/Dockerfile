@@ -28,7 +28,7 @@ RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 
 USER jupyter
 
-# Configure environment
+# Configure jupyter user
 ENV NB_USER=jupyter \
     NB_UID=9999
 ENV HOME=/home/$NB_USER
