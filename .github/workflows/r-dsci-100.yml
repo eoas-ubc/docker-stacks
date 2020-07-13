@@ -1,4 +1,4 @@
-name: Publish Docker
+name: Publish r-dsci-100 on DockerHub
 on: 
   push: 
     paths: 
