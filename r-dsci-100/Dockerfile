@@ -7,16 +7,21 @@ LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
 # R packages on conda-forge
 RUN conda install --quiet --yes -c conda-forge \
-  r-infer=0.4* \
-  r-rtsne=0* \
-  r-ggally=1.4* \
-  r-gridextra=2.3* \
-  r-testthat=2.1* \
-  r-rpostgres=1.1*
+  r-cowplot=1.* \
+  r-ggally=1.5.* \
+  r-gridextra=2.3.* \
+  r-infer=0.5.* \
+  r-testthat=2.3.* \
+  r-rpostgres=1.2.*
 
 USER root
 RUN pip install git+https://github.com/data-8/nbgitpuller \
-    && jupyter serverextension enable --sys-prefix nbgitpuller
+    && jupyter serverextension enable --sys-prefix nbgitpuller \
+    && jupyter labextension install @jupyterlab/git \
+    && pip install jupyterlab-git \
+    && jupyter serverextension enable --py jupyterlab_git \
+    && pip install jupytext --upgrade \
+    && jupyter lab build  
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 USER jupyter
 # Configure environment
