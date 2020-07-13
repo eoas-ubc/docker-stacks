@@ -5,6 +5,7 @@ FROM $BASE_CONTAINER
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
+# switch to root for installation
 USER root
 
 # install Rise slide extension
