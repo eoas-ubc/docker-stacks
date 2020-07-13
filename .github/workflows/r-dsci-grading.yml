@@ -1,8 +1,8 @@
-name: Publish r-dsci-100-grading on DockerHub
+name: Publish r-dsci-grading on DockerHub
 on: 
   push: 
     paths: 
-      - 'r-dsci-100-grading/Dockerfile'
+      - 'r-dsci-grading/Dockerfile'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,8 +14,8 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: ubcdsci/r-dsci-100-grading
+        name: ubcdsci/r-dsci-grading
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: r-dsci-100-grading
+        workdir: r-dsci-grading
         tags: "latest,${{ env.RELEASE_VERSION }}"
