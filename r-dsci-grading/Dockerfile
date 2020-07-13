@@ -10,7 +10,7 @@ USER root
 # install Rise slide extension
 RUN conda install --quiet --yes -c conda-forge rise
 
-# install nbgrader 
+# install nbgrader extension
 RUN pip install nbgrader==0.6.1
 RUN jupyter nbextension install --sys-prefix --py nbgrader --overwrite 
 RUN jupyter nbextension enable --sys-prefix --py nbgrader
