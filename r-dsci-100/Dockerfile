@@ -14,7 +14,9 @@ RUN conda install --quiet --yes -c conda-forge \
   r-testthat=2.3.* \
   r-rpostgres=1.2.*
 
+# Install jupyter extensions (nbgitpuller, git, jupytext)
 USER root
+
 RUN pip install git+https://github.com/data-8/nbgitpuller \
     && jupyter serverextension enable --sys-prefix nbgitpuller \
     && jupyter labextension install @jupyterlab/git \
@@ -23,7 +25,9 @@ RUN pip install git+https://github.com/data-8/nbgitpuller \
     && pip install jupytext --upgrade \
     && jupyter lab build  
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
+
 USER jupyter
+
 # Configure environment
 ENV NB_USER=jupyter \
     NB_UID=9999
