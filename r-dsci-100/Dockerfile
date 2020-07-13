@@ -5,7 +5,7 @@ FROM $BASE_CONTAINER
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
-# R packages on conda-forge
+# Install R packages on conda-forge
 RUN conda install --quiet --yes -c conda-forge \
   r-cowplot=1.* \
   r-ggally=1.5.* \
