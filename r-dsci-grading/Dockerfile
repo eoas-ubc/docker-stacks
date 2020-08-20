@@ -3,7 +3,7 @@
 ARG BASE_CONTAINER=ubcdsci/r-dsci-100
 FROM $BASE_CONTAINER
 
-LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
+LABEL maintainer="Tiffany Timbers <tiffany.timbers@stat.ubc.ca>"
 
 # switch to root for installation
 USER root
