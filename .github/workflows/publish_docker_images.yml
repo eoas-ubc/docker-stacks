@@ -20,7 +20,7 @@ jobs:
     - uses: oprypin/find-latest-tag@v1
       with:
         repository: UBC-DSCI/docker-stacks  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
+        releases-only: false  # We know that all relevant tags have a GitHub release for them.
       id: release
     - name: Create Release
       id: create_release
