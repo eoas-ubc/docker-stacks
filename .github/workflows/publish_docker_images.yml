@@ -17,6 +17,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
+    - uses: oprypin/find-latest-tag@v1
+      with:
+        repository: UBC-DSCI/docker-stacks  # The repository to scan.
+        releases-only: true  # We know that all relevant tags have a GitHub release for them.
+      id: release
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -31,11 +36,6 @@ jobs:
           - Rebuilt r-dsci-grading Docker image and published to DockerHub with new tag
         draft: false
         prerelease: false
-    - uses: oprypin/find-latest-tag@v1
-      with:
-        repository: UBC-DSCI/docker-stacks  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-      id: release
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
