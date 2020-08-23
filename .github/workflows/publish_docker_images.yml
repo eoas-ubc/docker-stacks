@@ -39,7 +39,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: r-dsci-100
-        tags: "${{ steps.bump.outputs.new_tag }}"
+        tags: "latest,${{ steps.bump.outputs.new_tag }}"
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
@@ -47,4 +47,4 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: r-dsci-grading
-        tags: "${{ steps.bump.outputs.new_tag }}"
+        tags: "latest,${{ steps.bump.outputs.new_tag }}"
