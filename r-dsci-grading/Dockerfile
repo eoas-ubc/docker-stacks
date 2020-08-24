@@ -18,4 +18,4 @@ RUN jupyter nbextension enable --sys-prefix --py nbgrader
 RUN jupyter serverextension enable --sys-prefix --py nbgrader
 
 # switch user
-USER $NB_UIDenable --sys-prefix --py nbgrader
+USER $NB_UID
