@@ -11,6 +11,7 @@ RUN conda install --quiet --yes -c conda-forge \
   r-ggally=1.5.* \
   r-gridextra=2.3.* \
   r-infer=0.5.* \
+  r-kknn \
   r-testthat=2.3.* \
   r-rpostgres=1.2.*
 
