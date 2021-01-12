@@ -1,6 +1,6 @@
 # Copyright (c) UBC-DSCI Development Team.
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=jupyter/r-notebook@sha256:78b8f6671174297f6d1ac1852a9fabe39bfc4f32718eca3b1ce70dc977e83fe4
+ARG BASE_CONTAINER=jupyter/r-notebook@sha256:38d5c53d93c02793d7dcade4db13c3f79a685b8cda700e36cded121ecc882bd2
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
