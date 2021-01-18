@@ -15,6 +15,9 @@ RUN conda install --quiet --yes -c conda-forge \
   r-testthat=2.3.* \
   r-rpostgres=1.2.*
 
+# Install the palmerpenguins dataset
+RUN Rscript -e "devtools::install_github('allisonhorst/palmerpenguins@v0.1.0')" 
+
 # Install jupyter extensions (nbgitpuller, git, jupytext)
 USER root
 
