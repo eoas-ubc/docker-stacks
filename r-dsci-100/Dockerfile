@@ -18,6 +18,9 @@ RUN conda install --quiet --yes -c conda-forge \
 # Install the palmerpenguins dataset
 RUN Rscript -e "devtools::install_github('allisonhorst/palmerpenguins@v0.1.0')" 
 
+# Install ISLR package for the Credit data set
+RUN Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')"
+
 # Install jupyter extensions (nbgitpuller, git, jupytext)
 USER root
 
