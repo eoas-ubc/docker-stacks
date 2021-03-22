@@ -8,8 +8,17 @@ To run the notebook in a docker container on your machine
   `git checkout -b tlef origin/tlev`
   `cd dsci-stacks`
 
-- Build the container
+- create a token using [make_token.sh](https://github.com/eoas-ubc/docker-stacks/blob/tlef/make_token.sh)  (assuming you have a bash shell)
 
+  `. make_token.sh`
+
+- copy that token into c.NotebookApp.token in [jupyter_notebook_config.py](https://github.com/eoas-ubc/docker-stacks/blob/tlef/r-dsci-100/jupyter_notebook_config.py)
+
+- edit [docker-compose.yml](https://github.com/eoas-ubc/docker-stacks/blob/tlef/docker-compose.yml) so that the bind-mounted volume points to your local clone of the dsci-100-instructor repo (I've cloned mine into /home/jupyter/dsci-100-instructor)
+
+- build the container with:
+
+  `docker-compose build 
 
 
 https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
