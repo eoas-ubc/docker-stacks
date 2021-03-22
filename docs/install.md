@@ -22,12 +22,12 @@ To run the notebook in a docker container on your machine
 
 - bring up the container on 127.0.0.1:8888
 
-`docker-compose up`
+  - `docker-compose up`
 
 - open your web browser  to run the notebooks
 
   - on a mac `open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
-  - on linx `xdg-open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
+  - on linux `xdg-open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
 
 
 
