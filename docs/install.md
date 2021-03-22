@@ -5,8 +5,9 @@ To run notebooks in a docker container on your machine you need a local clone of
 - Next clone this repository:
 
   `git clone https://github.com/eoas-ubc/docker-stacks`  
-  `git checkout -b tlef origin/tlev`  
   `cd dsci-stacks`
+  `git checkout -b tlef origin/tlev`  
+
 
 - create a token using [make_token.sh](https://github.com/eoas-ubc/docker-stacks/blob/tlef/make_token.sh)  (assuming you have a bash shell) and read it into the exported environmental variable JUPYTER_TOKEN and the file token.txt
 
@@ -14,7 +15,18 @@ To run notebooks in a docker container on your machine you need a local clone of
 
 - copy that token into c.NotebookApp.token in [jupyter_notebook_config.py](https://github.com/eoas-ubc/docker-stacks/blob/tlef/r-dsci-100/jupyter_notebook_config.py)
 
-- edit [docker-compose.yml](https://github.com/eoas-ubc/docker-stacks/blob/tlef/docker-compose.yml) so that the bind-mounted volume points to your local clone of the dsci-100-instructor repo (I've cloned mine into /home/jupyter/dsci-100-instructor)
+- install ansible
+  `conda install -c conda-forge ansible`
+
+- use ansible to create a new user called jupyter
+
+  `cd ansible`
+  `ansible-playbook playbook.yml -i hosts.yml --extra-vars "ansible_become_pass=password"
+
+- make a new directory called /home/jupyter/data_share
+  `sudo su - jupyer`
+  `mkdir -p /home/jupyter/data_share`  
+  then you'll need to  clone dsci-100-instructor into data_share (make sure you do this as user jupyter)
 
 - build the container with:
 
@@ -28,7 +40,7 @@ To run notebooks in a docker container on your machine you need a local clone of
 
   - on a mac `open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
   - on linux `xdg-open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
-
+  - on windows `wslview http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
 
 
 

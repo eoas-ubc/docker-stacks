@@ -35,8 +35,8 @@ RUN pip install git+https://github.com/data-8/nbgitpuller \
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 
 COPY jupyter_notebook_config.py /etc/jupyter/
-RUN mkdir -p /home/jupyter/dsci-100-instructor
-RUN chown jupyter /home/jupyter/dsci-100-instructor
+RUN mkdir -p /home/jupyter/data_share
+RUN chown jupyter /home/jupyter/data_share
 USER jupyter
 # Configure jupyter user
 
