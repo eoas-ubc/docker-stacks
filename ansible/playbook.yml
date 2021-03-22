@@ -45,17 +45,5 @@
       tags:
         - adduser
 
-    - name: Set authorized key for remote user
-      authorized_key:
-        user: "{{ username }}"
-        state: present
-        key: "{{ copy_local_key }}"
-      tags:
-        - adduser
-        
-    - name: checkout tutorials
-      git:
-        repo: /home/phil/repos/dsci-100-instructor
-        dest: /home/jupyter/dsci-100-instructor
-      become_user: "{{ username }}"
+  
 
