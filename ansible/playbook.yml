@@ -1,0 +1,61 @@
+#################################################
+# DO Community Playbooks: Initial Server Setup
+#################################################
+---
+- name: create user jupyter
+  hosts: all
+  become: true
+  vars:
+    username: "jupyter"
+    uid: "9999"
+    copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/do1_feb27.pub') }}"
+  tasks:
+# # Sudo Group Setup
+    - name: add groups wheel docker and sudo
+      group:
+        name: "{{ item.name }}"
+        state: present
+      with_items:
+        - { name: 'docker'}
+        - { name: 'wheel' }
+        - { name: 'sudo' }
+        - { name: 'users' }
+      tags:
+        - addgroup
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: '/usr/sbin/visudo -cf %s'
+      tags:
+        - addgroup
+
+# User + Key Setup
+    - name: Create a new regular user with sudo privileges
+      user:
+        name: "{{ username }}"
+        uid: "{{ uid }}"
+        state: present
+        groups: wheel,docker,users
+        append: true
+        create_home: true
+        shell: /bin/bash
+      tags:
+        - adduser
+
+    - name: Set authorized key for remote user
+      authorized_key:
+        user: "{{ username }}"
+        state: present
+        key: "{{ copy_local_key }}"
+      tags:
+        - adduser
+        
+    - name: checkout tutorials
+      git:
+        repo: /home/phil/repos/dsci-100-instructor
+        dest: /home/jupyter/dsci-100-instructor
+      become_user: "{{ username }}"
+

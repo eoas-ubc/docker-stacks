@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  dsci100_mar19:
+    build: r-dsci-100
+    image: phaustin/r_dsci100:mar19
+    container_name: r_dsci100_mar19
+    ports:
+      - ${NB_PORT}:8888
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - net_mar19
+
+# force the network name to be "jupyterhub"
+# this needs to be matched in jupyterhub_config.py by:
+# c.DockerSpawner.network_name = 'jupyterhub'
+networks:
+    net_mar19:
+      driver: bridge
+      name: net_mar19

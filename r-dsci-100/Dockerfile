@@ -34,6 +34,8 @@ RUN pip install git+https://github.com/data-8/nbgitpuller \
     && jupyter lab build  
 RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 
+COPY jupyter_notebook_config.py /etc/jupyter/
+
 USER jupyter
 
 # Configure jupyter user
