@@ -11,7 +11,7 @@ c = get_config()  # noqa: F821
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.port = 8888
 c.NotebookApp.open_browser = False
-c.NotebookApp.token =  '8f264a73bccf2443ebb11b4c78bcdc0de1b7d7308553c421fe4a0889cf97f604'
+c.NotebookApp.token =  'be5b7760bdf178b9b52a8ace9c5ffe5eb51ecca6e195f82002e0d8468322b406'
 
 # https://github.com/jupyter/notebook/issues/3130
 c.FileContentsManager.delete_to_trash = False
