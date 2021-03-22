@@ -20,8 +20,8 @@ To run notebooks in a docker container on your machine you need a local clone of
 
 - use ansible to create a new user called jupyter
 
-  `cd ansible`
-  `ansible-playbook playbook.yml -i hosts.yml --extra-vars "ansible_become_pass=password"
+  `cd ansible`  
+  `ansible-playbook playbook.yml -i hosts.yml --extra-vars "ansible_become_pass=password"`
 
 - make a new directory called /home/jupyter/data_share
   `sudo su - jupyer`
