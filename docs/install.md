@@ -1,8 +1,8 @@
-# running the notebook
+# running notebooks in a container
 
-To run the notebook in a docker container on your machine
+To run notebooks in a docker container on your machine you need a local clone of dsci-100-instructor.  On windows or mac this can be owned by you.  On linux it needs to be owned by user jupyter with uid 9999
 
-- Clone this repository:
+- Next clone this repository:
 
   `git clone https://github.com/eoas-ubc/docker-stacks`  
   `git checkout -b tlef origin/tlev`  
