@@ -37,7 +37,6 @@ RUN useradd -m -s /bin/bash -N -u 9999 jupyter
 COPY jupyter_notebook_config.py /etc/jupyter/
 
 USER jupyter
-
 # Configure jupyter user
 ENV NB_USER=jupyter \
     NB_UID=9999

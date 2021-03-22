@@ -10,6 +10,7 @@ services:
       - ${NB_PORT}:8888
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/home/jupyter/dsci-100-instructor:/home/jupyter/dsci-100-instructor"
     networks:
       - net_mar19
 
