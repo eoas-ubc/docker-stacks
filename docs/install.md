@@ -24,7 +24,7 @@ To run notebooks in a docker container on your machine you need a local clone of
   `ansible-playbook playbook.yml -i hosts.yml --extra-vars "ansible_become_pass=password"`
 
 - make a new directory called `/home/jupyter/data_share`
-  `sudo su - jupyter`
+  `sudo su - jupyter`  
   `mkdir -p /home/jupyter/data_share`    
   
   - then you'll need to  clone dsci-100-instructor into data_share (make sure you do this as user jupyter)
