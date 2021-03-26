@@ -7,13 +7,25 @@ services:
     image: phaustin/r_dsci100:mar19
     container_name: r_dsci100_mar19
     ports:
-      - ${NB_PORT}:8888
+      - ${R_NB_PORT}:8888
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/home/jupyter/data_share:/home/jupyter/data_share"
     networks:
       - net_mar19
 
+  dsci100_py:
+    build: py-dsci-100
+    image: phaustin/py_dsci100:latest
+    container_name: py_dsci100_mar26
+    ports:
+      - ${PY_NB_PORT}:8889
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/home/jupyter/data_share:/home/jupyter/data_share"
+    networks:
+      - net_mar19
+      
 # force the network name to be "jupyterhub"
 # this needs to be matched in jupyterhub_config.py by:
 # c.DockerSpawner.network_name = 'jupyterhub'

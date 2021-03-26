@@ -33,17 +33,23 @@ To run notebooks in a docker container on your machine you need a local clone of
 - build the container with:
 
   `docker-compose build dsci100_mar19`
+  `docker-compose build dsci100_py`
 
-- bring up the container on 127.0.0.1:8888
+- bring up the containers on 127.0.0.1:8000 and 127.0.0.1:8001
 
   - `docker-compose up`
 
 - open your web browser  to run the notebooks
 
-  - on a mac `open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
-  - on linux `xdg-open http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
-  - on windows `wslview http://127.0.0.1:8888/?token=${JUPYTER_TOKEN}`  
+  - on a mac `open http://127.0.0.1:8000/?token=${JUPYTER_TOKEN}`  
+  - on linux `xdg-open http://127.0.0.1:8000/?token=${JUPYTER_TOKEN}`  
+  - on windows `wslview http://127.0.0.1:8000/?token=${JUPYTER_TOKEN}`  
 
+- useful `.bashrc` shortcuts
+
+        export JUPYTER_TOKEN=8f264a73bccf2443ebb11b4c78bcdc0de1b7d7308553c421fe4a0889cf97f604
+        alias rweb='xdg-open http://127.0.0.1:8000/?token="${JUPYTER_TOKEN}"'
+        alias pyweb='xdg-open http://127.0.0.1:8001/?token="${JUPYTER_TOKEN}"'
 
 
 
